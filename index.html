@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MY DAY</p>
+        <h1>Task Manager</h1>
+        <p id="today" class="date"></p>
+      </div>
+      <button id="clearCompleted" class="ghost-btn" type="button">Clear completed</button>
+    </header>
+
+    <section class="stats" aria-label="Task statistics">
+      <div class="stat"><span id="totalCount">0</span><small>Total</small></div>
+      <div class="stat"><span id="activeCount">0</span><small>Pending</small></div>
+      <div class="stat"><span id="doneCount">0</span><small>Completed</small></div>
+      <div class="progress-card"><div class="progress-label"><span>Today's progress</span><strong id="progressText">0%</strong></div><div class="progress"><span id="progressBar"></span></div></div>
+    </section>
+
+    <section class="composer">
+      <form id="taskForm">
+        <input id="taskInput" type="text" maxlength="120" autocomplete="off" placeholder="What needs to get done?" required>
+        <select id="priority" aria-label="Priority">
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="low">Low</option>
+        </select>
+        <button class="add-btn" type="submit">Add task</button>
+      </form>
+    </section>
+
+    <nav class="filters" aria-label="Task filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="active">Pending</button>
+      <button class="filter" data-filter="completed">Completed</button>
+    </nav>
+
+    <section id="taskList" class="task-list" aria-live="polite"></section>
+    <p id="emptyState" class="empty" hidden>No tasks here. Humanity survives another day.</p>
+
+    <footer><span>Saved locally in your browser</span><button id="resetAll" class="text-btn" type="button">Reset all</button></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
