@@ -3,80 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#efe3c0">
-  <title>TrailDay | Task Manager</title>
+  <meta name="theme-color" content="#f4d58d">
+  <meta name="description" content="TrailDay, a playful local task manager for your daily mission.">
+  <title>TrailDay | Daily Mission</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="sun" aria-hidden="true"></div>
-  <div class="mountains" aria-hidden="true"><span></span><span></span><span></span></div>
-
+  <div class="grain" aria-hidden="true"></div><div class="sun" aria-hidden="true"></div><div class="cloud cloud-a" aria-hidden="true"></div><div class="cloud cloud-b" aria-hidden="true"></div>
   <main class="app-shell">
     <header class="topbar">
-      <div class="brand">
-        <div class="badge" aria-hidden="true">✦</div>
-        <div>
-          <p class="eyebrow">TRAILDAY / DAILY ROUTE</p>
-          <h1>Task<span>Manager</span></h1>
-          <p id="today" class="date"></p>
-        </div>
-      </div>
-      <button id="clearCompleted" class="pill-btn" type="button">Clear done ↗</button>
+      <a class="brand" href="." aria-label="TrailDay home"><span class="brand-mark">TD</span><span><b>TRAILDAY</b><small>DAILY ROUTE</small></span></a>
+      <button id="clearCompleted" class="outline-btn" type="button">CLEAR DONE <span>↗</span></button>
     </header>
 
-    <section class="hero-card">
+    <section class="hero">
       <div class="hero-copy">
-        <p class="route-label">TODAY'S MISSION</p>
-        <h2>Make the day <em>count.</em></h2>
-        <p id="quote">Small moves. Big terrain. Keep going.</p>
+        <div class="sticker">★ TODAY'S MISSION</div>
+        <h1>Make the day<br><span>count.</span></h1>
+        <p id="today" class="date"></p>
+        <p id="quote" class="quote">Small moves. Big terrain. Keep going.</p>
       </div>
-      <div class="rover" aria-hidden="true">
-        <div class="rover-body"><span class="window"></span><span class="window small"></span></div>
-        <div class="wheel left"></div><div class="wheel right"></div>
-        <span class="flag">★</span>
-      </div>
-    </section>
-
-    <section class="stats" aria-label="Task statistics">
-      <div class="stat"><span id="totalCount">0</span><small>ON ROUTE</small></div>
-      <div class="stat"><span id="activeCount">0</span><small>TO GO</small></div>
-      <div class="stat"><span id="doneCount">0</span><small>DONE</small></div>
-      <div class="progress-card">
-        <div class="progress-label"><span>DAY COMPLETION</span><strong id="progressText">0%</strong></div>
-        <div class="progress"><span id="progressBar"></span></div>
+      <div class="scene" aria-hidden="true">
+        <div class="sunburst"></div><div class="mountain back"></div><div class="mountain front"></div>
+        <div class="road"><span></span><span></span><span></span></div><div class="cactus"><i></i><b></b></div>
+        <div class="rover"><div class="antenna"></div><div class="flag">★</div><div class="car-body"><div class="windshield"></div><div class="window"></div><div class="headlight"></div></div><div class="bumper"></div><div class="wheel wheel-a"></div><div class="wheel wheel-b"></div></div>
       </div>
     </section>
 
-    <section class="composer">
-      <div class="section-tag">+ NEW WAYPOINT</div>
-      <form id="taskForm">
-        <input id="taskInput" type="text" maxlength="120" autocomplete="off" placeholder="What's the next move?" required>
-        <select id="priority" aria-label="Priority">
-          <option value="medium">● Medium</option>
-          <option value="high">▲ High</option>
-          <option value="low">▼ Low</option>
-        </select>
-        <button class="add-btn" type="submit">Add waypoint</button>
-      </form>
+    <section class="dashboard" aria-label="Today's progress">
+      <div class="stat"><span id="totalCount">0</span><small>WAYPOINTS</small></div><div class="stat"><span id="activeCount">0</span><small>STILL AHEAD</small></div><div class="stat"><span id="doneCount">0</span><small>REACHED</small></div>
+      <div class="progress-card"><div class="progress-top"><span>ROUTE PROGRESS</span><strong id="progressText">0%</strong></div><div class="progress"><span id="progressBar"></span></div><div class="progress-note">Keep moving. The map isn't going to finish itself.</div></div>
     </section>
 
-    <nav class="filters" aria-label="Task filters">
-      <button class="filter active" data-filter="all">All routes</button>
-      <button class="filter" data-filter="active">Still ahead</button>
-      <button class="filter" data-filter="completed">Completed</button>
-    </nav>
+    <section class="planner-card">
+      <div class="card-heading"><span class="pin">+</span><div><b>NEW WAYPOINT</b><small>What is the next move?</small></div></div>
+      <form id="taskForm"><input id="taskInput" type="text" maxlength="120" autocomplete="off" placeholder="e.g. Finish DSA practice" required><select id="priority" aria-label="Priority"><option value="medium">●  MEDIUM</option><option value="high">▲  HIGH</option><option value="low">▼  LOW</option></select><button class="add-btn" type="submit">ADD TO MAP <span>+</span></button></form>
+    </section>
 
+    <nav class="filters" aria-label="Task filters"><button class="filter active" data-filter="all"><span>01</span> ALL ROUTES</button><button class="filter" data-filter="active"><span>02</span> STILL AHEAD</button><button class="filter" data-filter="completed"><span>03</span> COMPLETED</button></nav>
+    <section class="trail-head"><span>YOUR ROUTE</span><i></i><small id="routeStatus">0 WAYPOINTS</small></section>
     <section id="taskList" class="task-list" aria-live="polite"></section>
-    <div id="emptyState" class="empty" hidden>
-      <div class="empty-icon">⌁</div>
-      <strong>Trail is clear.</strong>
-      <span>Add a waypoint and start moving.</span>
-    </div>
-
-    <footer><span>LOCAL STORAGE • YOUR DATA STAYS IN THIS BROWSER</span><button id="resetAll" class="text-btn" type="button">Reset map</button></footer>
+    <div id="emptyState" class="empty" hidden><div class="empty-badge">⌁</div><strong>Trail is clear.</strong><span>Add a waypoint and start moving.</span></div>
+    <footer><span>LOCAL STORAGE • DATA STAYS IN THIS BROWSER</span><button id="resetAll" class="text-btn" type="button">RESET MAP</button></footer>
   </main>
   <script src="script.js"></script>
 </body>
